@@ -1,0 +1,38 @@
+<div class="dashboard">
+    {{#if error}}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+    {{/if}}
+    
+    <h1>Dashboard</h1>
+    <p>You are logged in as {{ user.username }}#{{ user.discriminator }}.</p>
+
+    <div class="user">
+        <span><strong>Email:</strong> {{ user.email }}</span>
+    </div>
+
+    <div class="activation">
+        {{#if user.key}}
+            <span><strong>Key:</strong> {{ user.key.activation_key }}</span>
+            <span><strong>Expires at:</strong> {{ user.key.expires_at_formatted }}</span>
+        {{else}}
+            <span><strong>Key:</strong> You do not have a key linked to your account.</span>
+        {{/if}}
+    </div>
+    
+
+    <div class="logout">
+        {{#unless user.isMember}}
+            <a href="/activate">Activate Key</a> | 
+        {{/unless}}
+        {{#if admin}}
+            <a href="/admin">Admin Panel</a> | 
+
+        {{/if}}
+        <a href="/logout">Logout</a>
+    </div>
+</div>
+
+
+

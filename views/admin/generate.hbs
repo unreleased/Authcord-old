@@ -1,0 +1,26 @@
+<div class="admin-generate">
+    <h1>Generate Activation Key</h1>
+    <p>Generate activation keys.</p>
+
+    {{#if key}}
+        <div class="generated-key">
+            <span><strong>Key Generated: </strong>{{ key }}</span>
+        </div>
+    {{/if}}
+
+    {{#if error}}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+    {{/if}}
+
+    <form action="/admin/generate" method="POST">
+        <select name="type">
+            <option value="monthly">Monthly</option>
+            <option value="semiannually">Semi Annual</option>
+            <option value="yearly">Yearly</option>
+            <option value="lifetime">Lifetime</option>
+        </select>
+        <input type="submit" value="Generate">
+    </form>
+</div>

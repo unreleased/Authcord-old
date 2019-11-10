@@ -1,0 +1,57 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.error p {
+  color: red;
+  display: block;
+}
+
+.dashboard .activation span {
+  display: block
+}
+
+.dashboard .user {
+  margin-bottom: 20px;
+}
+
+.dashboard .logout {
+  margin-top: 20px;
+  display: block;
+}
+
+
+.admin-generate form {
+  margin-top: 20px;
+}
+
+input {
+  padding: 10px 15px;
+  display: block;
+}
+
+input:not(:first-child) {
+  margin-top: 10px;
+}
+
+input[type=text] {
+  width: 250px;
+}
+
+table td, table th {
+  padding: 10px;
+}
+
+.admin-key form {
+  margin-top: 40px
+}
+
+.admin-users form {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}

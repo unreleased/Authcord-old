@@ -1,0 +1,20 @@
+<div class="admin-key">
+    <h1>{{ key.activation_key }}</h1>
+    <p>Edit activation key</p>
+
+    <p><strong>Expires at:</strong> {{ key.expires_at_formatted }}</p>
+    <p><strong>Created at:</strong> {{ key.created_at_formatted }}</p>
+
+    {{#if error}}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+    {{/if}}
+
+    <form action="/admin/keys/{{ key.activation_key }}" method="POST">
+        <p>Change expiration date</p>
+        <input type="date" name="expirary">
+        <input type="submit" value="Change">
+    </form>
+
+</div>

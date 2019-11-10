@@ -1,0 +1,15 @@
+<div class="activate">
+    {{#if error}}
+        <div class="error">
+            <p>{{ error }}</p>
+        </div>
+    {{/if}}
+
+    <h1>Activate Key</h1>
+    <p>Activate your license key</p>
+
+    <form action="/activate" method="POST">
+        <input type="text" name="key" placeholder="XXXXX-XXXXX-XXXXX-XXXXX">
+        <input type="submit" value="Activate">
+    </form>
+</div>
