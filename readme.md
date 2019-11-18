@@ -54,7 +54,7 @@ Test it's working. Right click a user on your friends list and if you see the op
 ### Setting up `.env.template`
 
 `PORT` The port you want the server to run on. The default is set to 3000 for testing. <br/>
-`DISCORD_CLIENT_ID` The client ID for your Discord Bot. Visit (Discord developers)[https://discordapp.com/developers/applications] and select your application to view your client ID.<br/>
+`DISCORD_CLIENT_ID` The client ID for your Discord Bot. Visit [Discord developers](https://discordapp.com/developers/applications) and select your application to view your client ID.<br/>
 
 ### Importing the MySQL Database
 
