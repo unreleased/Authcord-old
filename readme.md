@@ -1,5 +1,7 @@
 # Readme
 
+Pls note. This readme is still under construction. <br/>
+
 Hi, thank you for downloading and testing out this free dashboard, not much has been implemented except the basics. You'll notice there isn't any payments implemented and most-likely there won't be. There isn't too much error handling, you'll have to resolve a lot of the issues yourself, just consider this a very basic template.
 
 You will need some devops/developer ability in order to set this up, i'm sure you could find somebody who is willing to do it for you for cheap, that person is not me.
@@ -25,7 +27,7 @@ The bot is built into this, once you start the server the bot will be started al
 Follow the different guides below to setup this on your server.
 
 * [Enable Discord Developer Mode](#enable-discord-developer-mode)
-* [Setting up .env](#setting-up-envtemplate`)
+* [Setting up .env](#setting-up-envtemplate)
 
 ### Enable Discord Developer Mode
 
@@ -51,8 +53,8 @@ Test it's working. Right click a user on your friends list and if you see the op
 
 ### Setting up `.env.template`
 
-**PORT** The port you want the server to run on. The default is set to 3000 for testing.
-**DISCORD_CLIENT_ID** Finish
+`PORT` The port you want the server to run on. The default is set to 3000 for testing. <br/>
+`DISCORD_CLIENT_ID` The client ID for your Discord Bot. Visit (Discord developers)[https://discordapp.com/developers/applications] and select your application to view your client ID.<br/>
 
 ### Importing the MySQL Database
 
