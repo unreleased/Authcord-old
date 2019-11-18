@@ -20,6 +20,7 @@ The bot is built into this, once you start the server the bot will be started al
   * Edit keys
   * Generate key
   * View users
+    * View servers a user is in
 * Activation system
   * Activate keys (user is added to server once they activate their key, however they are not automatically removed)
 

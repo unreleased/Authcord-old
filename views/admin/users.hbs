@@ -20,6 +20,7 @@
             <th>Activation Key</th>
             <th>Expires At</th>
             <th>Edit Key</th>
+            <th>Servers</th>
         </tr>
 
         {{#each users}}
@@ -35,6 +36,7 @@
                     <td>N/A</td>
                     <td>N/A</td>
                 {{/if}}
+                <td><a href="/admin/users/{{id}}/servers">View Servers</a></td>
             </tr>
         {{/each}}
     </table>

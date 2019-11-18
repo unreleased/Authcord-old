@@ -7,27 +7,14 @@ a {
   color: #00B7FF;
 }
 
+h1,h2,h3,h4,h5,h6,p,li,ul {
+  margin: 0;
+  padding: 0;
+}
+
 .error p {
   color: red;
   display: block;
-}
-
-.dashboard .activation span {
-  display: block
-}
-
-.dashboard .user {
-  margin-bottom: 20px;
-}
-
-.dashboard .logout {
-  margin-top: 20px;
-  display: block;
-}
-
-
-.admin-generate form {
-  margin-top: 20px;
 }
 
 input {
@@ -47,6 +34,14 @@ table td, table th {
   padding: 10px;
 }
 
+/**
+ * Admin Panel 
+ */
+
+.admin-generate form {
+  margin-top: 20px;
+}
+
 .admin-key form {
   margin-top: 40px
 }
@@ -54,4 +49,67 @@ table td, table th {
 .admin-users form {
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+
+/**
+* Dashboard
+*/
+
+.dashboard .activation span {
+  display: block
+}
+
+.dashboard .logout {
+  margin-top: 20px;
+  display: block;
+}
+
+.dashboard header {
+  margin-bottom: 25px;
+}
+
+.dashboard .discord-account {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: #f3f3f3;
+  max-width: 650px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.dashboard .discord-account img {
+  border-radius: 50%;
+  max-width: 48px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.dashboard .discord-account .user h3 {
+  margin-bottom: 0;
+}
+
+.dashboard header p {
+  margin-top: 5px;
+}
+
+/**
+* Admin servers
+*/
+
+.admin-servers header {
+  margin-bottom: 20px;
+}
+
+.admin-servers .server {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.admin-servers .server img {
+  margin-right: 10px;
 }

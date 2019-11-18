@@ -97,7 +97,6 @@ Discord.addToServer = async (id) => {
 
 }
 
-
 Discord.getAccessToken = async (id) => {
     try {
         const user  = await knex('discords')
@@ -107,7 +106,7 @@ Discord.getAccessToken = async (id) => {
         if (user) {
             // Check if bearer token has expired
             if (moment(user.token_expires).isAfter(moment())) {
-                return user.token_expires
+                return user.access_token
             } else {
                 // return fresh token
                 return await Discord._getNewToken(user.refresh_token)
@@ -163,6 +162,34 @@ Discord._getNewToken = async (token) => {
     })
 }
 
+Discord.findServers = async (id) => {
+    const token = await Discord.getAccessToken(id)
+    console.log("TOKEN!")
+    console.log(token)
+
+    if (token) {
+        const opts  = {
+            url     : 'https://discordapp.com/api/users/@me/guilds',
+            method  : 'GET',
+            json    : true,
+            headers : {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        }
+    
+        return request(opts).then(res => {
+            console.log(res.body)
+            return res.body
+        }).catch(err => {
+            console.log(err)
+            return false
+        })
+    } else {
+        console.log("no token")
+        return false
+    }
+}
 
 
 module.exports = Discord

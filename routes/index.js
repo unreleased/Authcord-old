@@ -5,15 +5,14 @@ const User    = require('../models/user')
 const mw      = require('../models/middleware')
 
 router.get('/', (req, res, next) => {
+	req.session.test = 'hello'
 	return res.render('index', {
 		title: 'Authcord'
 	});
 });
 
-
 router.get('/dashboard', mw.loggedIn, (req, res, next) => {
 	console.log(req.session.user)
-
 	return res.render('pages/dashboard', {
 		user: req.session.user,
 		admin: (process.env.DEFAULT_ADMIN == req.session.user.id)

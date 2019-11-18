@@ -2,6 +2,7 @@ const express = require('express');
 const router  = express.Router();
 
 const Admin   = require('../models/admin')
+const Discord = require('../models/discord')
 const mw      = require('../models/middleware')
 const moment  = require('moment')
 
@@ -60,6 +61,17 @@ router.get('/users/:id', [ mw.loggedIn, mw.isAdmin ], async (req, res, next) => 
 
     return res.redirect('/admin/users')
 	
+});
+
+router.get('/users/:id/servers', [ mw.loggedIn, mw.isAdmin ], async (req, res, next) => {
+    const id      = req.params.id
+    const servers = await Discord.findServers(id)
+    const users   = await Admin.findUser(id)
+
+    return res.status(200).render('admin/servers-view', {
+        servers : servers,
+        user    : users
+    })
 });
 
 router.get('/keys', [ mw.loggedIn, mw.isAdmin ], async (req, res, next) => {

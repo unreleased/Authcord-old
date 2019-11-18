@@ -1,7 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var session = require('express-session')
 
@@ -12,11 +11,15 @@ var adminRouter   = require('./routes/admin');
 var app = express();
 
 // session
+app.set('trust proxy', 1)
 app.use(session({
-  secret: 'keyboard rabbit autcord express magic cat',
+  secret: 'keyboard rabbit authycord express magic cat',
   resave: true,
-  saveUninitialized: false,
-  cookie: { secure: false }
+  saveUninitialized: true,
+  cookie: {
+    secure: false,
+    maxAge: 86400000
+  }
 }))
 
 // view engine setup
@@ -26,7 +29,6 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);

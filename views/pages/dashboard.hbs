@@ -5,11 +5,18 @@
         </div>
     {{/if}}
     
-    <h1>Dashboard</h1>
-    <p>You are logged in as {{ user.username }}#{{ user.discriminator }}.</p>
+    <header>
+        <h1>Dashboard</h1>
+        <p>You are logged in as {{ user.username }}#{{ user.discriminator }}.</p>
+    </header>
+    
 
-    <div class="user">
-        <span><strong>Email:</strong> {{ user.email }}</span>
+    <div class="discord-account">
+        <img src="https://cdn.discordapp.com/avatars/{{user.id}}/{{user.avatar}}.png?size=64" alt="Profile picture">
+        <div class="user">
+            <h3>{{user.username}}#{{user.discriminator}}</h3>
+            <span>{{user.email}}</span>
+        </div>
     </div>
 
     <div class="activation">
