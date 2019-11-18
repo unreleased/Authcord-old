@@ -8,8 +8,8 @@ The bot is built into this, once you start the server the bot will be started al
 
 ### Contents
 
-[Features](https://github.com/developerconor/Authcord/blob/master/readme.md#features)
-[Setup](https://github.com/developerconor/Authcord/blob/master/readme.md#setup)
+[Features](#features)
+[Setup](#setup)
 
 # Features
 
@@ -24,42 +24,18 @@ The bot is built into this, once you start the server the bot will be started al
 # Setup
 Follow the different guides below to setup this on your server.
 
-[Enable Discord Developer Mode](https://www.google.com)
+[Enable Discord Developer Mode](#enable-discord-developer-mode)
 
 #### Enable Discord Developer Mode
 
 Visit your Discord user settings. It should be at the bottom-left of your screen.
-![alt text](https://i.imgur.com/8Q9nJyr.png "View of Discord user settings")
+![](https://i.imgur.com/8Q9nJyr.png "View of Discord user settings" | width=100)
 
 Visit "Appearance" and scroll down to "Advanced". The first option will let you enable developer mode.
-![alt text](https://i.imgur.com/Eaq1S7A.png "View of Advanced appeareance settings in Discord")
+![](https://i.imgur.com/Eaq1S7A.png "View of Advanced appeareance settings in Discord")
 
 Test it's working. Right click a user on your friends list and if you see the option to "Copy ID". You've successfully enabled Discord developer mode.
-![alt text](https://i.imgur.com/I2nh893.png "View of developer mode")
-
-
-#### Setting up `.env.template`
-#### Importing the MySQL Database
-#### 
-
-
-* Please follow the `.env.template` tutorial and fill in ALL the details, you should enable developer mode if not already under your Discord appearance settings, right clicking often lets you "copy id"
-* Please create a mysql database and import the import.sql file to get the basic configuration for the server to work
-* I recommend using pm2 or forever to run the server constantly, check their documentation for instruction
-* Make sure you run `npm install` to install the required dependencies for the software to work. You can test it by running `npm start` if you see any errors, chances are you haven't set it up successfully. The default url will be: http://localhost:3000
-
-[Enable Discord Developer Mode](https://www.google.com)
-
-#### Enable Discord Developer Mode
-
-Visit your Discord user settings. It should be at the bottom-left of your screen.
-![alt text](https://i.imgur.com/8Q9nJyr.png "View of Discord user settings")
-
-Visit "Appearance" and scroll down to "Advanced". The first option will let you enable developer mode.
-![alt text](https://i.imgur.com/Eaq1S7A.png "View of Advanced appeareance settings in Discord")
-
-Test it's working. Right click a user on your friends list and if you see the option to "Copy ID". You've successfully enabled Discord developer mode.
-![alt text](https://i.imgur.com/I2nh893.png "View of developer mode")
+![](https://i.imgur.com/I2nh893.png "View of developer mode")
 
 
 #### Setting up `.env.template`
