@@ -8,8 +8,8 @@ The bot is built into this, once you start the server the bot will be started al
 
 ### Contents
 
-[Features](#features)
-[Setup](#setup)
+* [Features](#features)
+* [Setup](#setup)
 
 # Features
 
@@ -24,9 +24,10 @@ The bot is built into this, once you start the server the bot will be started al
 # Setup
 Follow the different guides below to setup this on your server.
 
-[Enable Discord Developer Mode](#enable-discord-developer-mode)
+* [Enable Discord Developer Mode](#enable-discord-developer-mode)
+* [Setting up .env](#setting-up-envtemplate`)
 
-#### Enable Discord Developer Mode
+### Enable Discord Developer Mode
 
 Visit your Discord user settings. It should be at the bottom-left of your screen.
 <div>
@@ -48,10 +49,12 @@ Test it's working. Right click a user on your friends list and if you see the op
     <img src="https://i.imgur.com/I2nh893.png" width="250" height="auto" />
 </div>
 
-#### Setting up `.env.template`
-#### Importing the MySQL Database
-#### 
+### Setting up `.env.template`
 
+**PORT** The port you want the server to run on. The default is set to 3000 for testing.
+**DISCORD_CLIENT_ID** Finish
+
+### Importing the MySQL Database
 
 * Please follow the `.env.template` tutorial and fill in ALL the details, you should enable developer mode if not already under your Discord appearance settings, right clicking often lets you "copy id"
 * Please create a mysql database and import the import.sql file to get the basic configuration for the server to work
