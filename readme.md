@@ -56,6 +56,16 @@ Test it's working. Right click a user on your friends list and if you see the op
 
 `PORT` The port you want the server to run on. The default is set to 3000 for testing. <br/>
 `DISCORD_CLIENT_ID` The client ID for your Discord Bot. Visit [Discord developers](https://discordapp.com/developers/applications) and select your application to view your client ID.<br/>
+`DISCORD_CLIENT_SECRET` The client secret for your Discord Bot. You can get it from the same place as `DISCORD_CLIENT_ID`<br/>
+`DISCORD_BOT_TOKEN` The Discord Bot token which can be found under the "Bot" section on the [Discord developers](https://discordapp.com/developers/applications) panel.<br/>
+`DISCORD_REDIRECT_URI` The redirect URI for your Discord login. You need to change this to the URL with the same `/discord/callback` path if you plan on deploying the server to a website rather than just testing on localhost.<br/>
+`DISCORD_SCOPES` Scopes used by the Discord login. Editing without correct configuration may cause bugs. I recommend using the defaults.<br/>
+`DISCORD_SERVER_ID` You can get this after you've enabled [Discord developer mode](#enable-discord-developer-mode). Right click on the server and click "Copy ID".<br/>
+`DEFAULT_ROLE` The default role to give users once they're added to the server (After activating their key). You can get the role ID by enabling [Discord developer mode](#enable-discord-developer-mode) and clicking "Copy ID" on the role of a user.<br/><br/>
+`DB_HOST` The IP/host for your MySQL database.<br/>
+`DB_NAME` The name of your Database.<br/>
+`DB_USER` The username for the account of your database.<br/>
+`DB_PASS` The password for the account of your database.<br/>
 
 ### Importing the MySQL Database
 
