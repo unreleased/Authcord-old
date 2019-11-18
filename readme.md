@@ -33,11 +33,20 @@ Visit your Discord user settings. It should be at the bottom-left of your screen
     <img src="https://i.imgur.com/8Q9nJyr.png" width="450" height="auto" />
 </div>
 
+<br>
+
 Visit "Appearance" and scroll down to "Advanced". The first option will let you enable developer mode.
-![](https://i.imgur.com/Eaq1S7A.png)
+<div>
+    <img src="https://i.imgur.com/Eaq1S7A.png" width="750" height="auto" />
+</div>
+
+<br>
+
 
 Test it's working. Right click a user on your friends list and if you see the option to "Copy ID". You've successfully enabled Discord developer mode.
-![](https://i.imgur.com/I2nh893.png)
+<div>
+    <img src="https://i.imgur.com/Eaq1S7A.png" width="250" height="auto" />
+</div>
 
 #### Setting up `.env.template`
 #### Importing the MySQL Database
