@@ -1,26 +1,28 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var session = require('express-session')
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const session = require('express-session');
 
-var indexRouter   = require('./routes/index')
-var discordRouter = require('./routes/discord');
-var adminRouter   = require('./routes/admin');
+const indexRouter = require('./routes/index');
+const discordRouter = require('./routes/discord');
+const adminRouter = require('./routes/admin');
 
-var app = express();
+const app = express();
 
 // session
-app.set('trust proxy', 1)
-app.use(session({
-  secret: 'keyboard rabbit authycord express magic cat',
-  resave: true,
-  saveUninitialized: true,
-  cookie: {
-    secure: false,
-    maxAge: 86400000
-  }
-}))
+app.set('trust proxy', 1);
+app.use(
+  session({
+    secret: 'keyboard rabbit authycord express magic cat',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      secure: false,
+      maxAge: 86400000,
+    },
+  }),
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -36,15 +38,15 @@ app.use('/discord', discordRouter);
 app.use('/admin', adminRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error   = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
   res.status(err.status || 500);
@@ -52,8 +54,8 @@ app.use(function(err, req, res, next) {
 });
 
 // user middleware handler
-app.use(function (req, res, next) {
-  next()
-})
+app.use((req, res, next) => {
+  next();
+});
 
 module.exports = app;

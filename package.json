@@ -24,5 +24,10 @@
     "request": "^2.88.0",
     "request-promise": "^4.2.5",
     "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1"
   }
 }

@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-const Discord = require('discord.js')
+const Discord = require('discord.js');
 
 /**
  * Module dependencies.
  */
 
-var app = require('../app');
+let app = require('../app');
 var debug = require('debug')('authcord:server');
 var http = require('http');
 
@@ -59,9 +59,7 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  var bind = typeof port === 'string' ? 'Pipe ' + port : 'Port ' + port;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -84,15 +82,13 @@ function onError(error) {
 
 function onListening() {
   var addr = server.address();
-  var bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+  var bind = typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
 
-global.discordClient = new Discord.Client()
-global.discordClient.login(process.env.DISCORD_BOT_TOKEN)
+global.discordClient = new Discord.Client();
+global.discordClient.login(process.env.DISCORD_BOT_TOKEN);
 
 global.discordClient.on('ready', async function() {
-  console.log("[DISCORD] Bot initiated")
-})
+  console.log('[DISCORD] Bot initiated');
+});

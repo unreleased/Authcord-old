@@ -1,43 +1,43 @@
 <div class="admin-users">
-    <h1>View Users</h1>
-    <p>View registered users</p>
+  <h1>View Users</h1>
+  <p>View registered users</p>
 
-    {{#if error}}
-        <div class="error">
-            <p>{{ error }}</p>
-        </div>
-    {{/if}}
+  {{#if error}}
+  <div class="error">
+    <p>{{ error }}</p>
+  </div>
+  {{/if}}
 
-    <form action="/admin/users" method="POST">
-        <input type="text" name="query" placeholder="Enter a Discord ID or Activation key">
-        <input type="submit" name="submit">
-    </form>
+  <form action="/admin/users" method="POST">
+    <input type="text" name="query" placeholder="Enter a Discord ID or Activation key" />
+    <input type="submit" name="submit" />
+  </form>
 
-    <table border="1">
-        <tr>
-            <th>Discord Username</th>
-            <th>Joined At</th>
-            <th>Activation Key</th>
-            <th>Expires At</th>
-            <th>Edit Key</th>
-            <th>Servers</th>
-        </tr>
+  <table border="1">
+    <tr>
+      <th>Discord Username</th>
+      <th>Joined At</th>
+      <th>Activation Key</th>
+      <th>Expires At</th>
+      <th>Edit Key</th>
+      <th>Servers</th>
+    </tr>
 
-        {{#each users}}
-            <tr>
-                <td>{{ username }}#{{ discriminator }} ({{ id }})</td>
-                <td>{{ joined_at_formatted }}</td>
-                {{#if activation_key}}
-                    <td>{{ activation_key }}</td>
-                    <td>{{ expires_at_formatted }}</td>
-                    <td><a href="/admin/keys/{{ activation_key}}">Edit key</a></td>
-                {{else}}
-                    <td>N/A</td>
-                    <td>N/A</td>
-                    <td>N/A</td>
-                {{/if}}
-                <td><a href="/admin/users/{{id}}/servers">View Servers</a></td>
-            </tr>
-        {{/each}}
-    </table>
+    {{#each users}}
+    <tr>
+      <td>{{ username }}#{{ discriminator }} ({{ id }})</td>
+      <td>{{ joined_at_formatted }}</td>
+      {{#if activation_key}}
+      <td>{{ activation_key }}</td>
+      <td>{{ expires_at_formatted }}</td>
+      <td><a href="/admin/keys/{{ activation_key }}">Edit key</a></td>
+      {{else}}
+      <td>N/A</td>
+      <td>N/A</td>
+      <td>N/A</td>
+      {{/if}}
+      <td><a href="/admin/users/{{ id }}/servers">View Servers</a></td>
+    </tr>
+    {{/each}}
+  </table>
 </div>

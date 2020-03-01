@@ -1,34 +1,33 @@
 <div class="admin-keys">
-    <h1>Activation keys</h1>
-    <p>Find and edit activation keys</p>
+  <h1>Activation keys</h1>
+  <p>Find and edit activation keys</p>
 
-    {{#if error}}
-        <div class="error">
-            <p>{{ error }}</p>
-        </div>
-    {{/if}}
+  {{#if error}}
+  <div class="error">
+    <p>{{ error }}</p>
+  </div>
+  {{/if}}
 
-    <table border="1">
-        <tr>
-            <th>Activation Key</th>
-            <th>Activated By</th>
-            <th>Expires At</th>
-            <th>Created At</th>
-            <th>Edit Key</th>
-        </tr>
-        {{#each keys}}
-            <tr>
-                <td>{{ activation_key }}</td>
-                {{#if username}}
-                    <td>{{ username }}#{{ discriminator }}</td>
-                {{else}}
-                    <td>N/A</td>
-                {{/if}}
-                <td>{{ expires_at_formatted }}</td>
-                <td>{{ created_at_formatted }}</td>
-                <td><a href="/admin/keys/{{ activation_key}}/edit">Edit key</a></td>
-            </tr>
-        {{/each}}
-    </table>
-
+  <table border="1">
+    <tr>
+      <th>Activation Key</th>
+      <th>Activated By</th>
+      <th>Expires At</th>
+      <th>Created At</th>
+      <th>Edit Key</th>
+    </tr>
+    {{#each keys}}
+    <tr>
+      <td>{{ activation_key }}</td>
+      {{#if username}}
+      <td>{{ username }}#{{ discriminator }}</td>
+      {{else}}
+      <td>N/A</td>
+      {{/if}}
+      <td>{{ expires_at_formatted }}</td>
+      <td>{{ created_at_formatted }}</td>
+      <td><a href="/admin/keys/{{ activation_key }}/edit">Edit key</a></td>
+    </tr>
+    {{/each}}
+  </table>
 </div>
