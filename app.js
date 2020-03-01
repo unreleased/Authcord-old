@@ -21,7 +21,7 @@ app.use(
       secure: false,
       maxAge: 86400000,
     },
-  })
+  }),
 );
 
 // view engine setup
