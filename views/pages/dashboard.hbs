@@ -1,45 +1,40 @@
 <div class="dashboard">
-    {{#if error}}
-        <div class="error">
-            <p>{{ error }}</p>
-        </div>
+  {{#if error}}
+  <div class="error">
+    <p>{{ error }}</p>
+  </div>
+  {{/if}}
+
+  <header>
+    <h1>Dashboard</h1>
+    <p>You are logged in as {{ user.username }}#{{ user.discriminator }}.</p>
+  </header>
+
+  <div class="discord-account">
+    <img src="https://cdn.discordapp.com/avatars/{{ user.id }}/{{ user.avatar }}.png?size=64" alt="Profile picture" />
+    <div class="user">
+      <h3>{{ user.username }}#{{ user.discriminator }}</h3>
+      <span>{{ user.email }}</span>
+    </div>
+  </div>
+
+  <div class="activation">
+    {{#if user.key}}
+    <span><strong>Key:</strong> {{ user.key.activation_key }}</span>
+    <span><strong>Expires at:</strong> {{ user.key.expires_at_formatted }}</span>
+    {{else}}
+    <span><strong>Key:</strong> You do not have a key linked to your account.</span>
     {{/if}}
-    
-    <header>
-        <h1>Dashboard</h1>
-        <p>You are logged in as {{ user.username }}#{{ user.discriminator }}.</p>
-    </header>
-    
+  </div>
 
-    <div class="discord-account">
-        <img src="https://cdn.discordapp.com/avatars/{{user.id}}/{{user.avatar}}.png?size=64" alt="Profile picture">
-        <div class="user">
-            <h3>{{user.username}}#{{user.discriminator}}</h3>
-            <span>{{user.email}}</span>
-        </div>
-    </div>
+  <div class="logout">
+    {{#unless user.isMember}}
+    <a href="/activate">Activate Key</a> |
+    {{/unless}}
+    {{#if admin}}
+    <a href="/admin">Admin Panel</a> |
 
-    <div class="activation">
-        {{#if user.key}}
-            <span><strong>Key:</strong> {{ user.key.activation_key }}</span>
-            <span><strong>Expires at:</strong> {{ user.key.expires_at_formatted }}</span>
-        {{else}}
-            <span><strong>Key:</strong> You do not have a key linked to your account.</span>
-        {{/if}}
-    </div>
-    
-
-    <div class="logout">
-        {{#unless user.isMember}}
-            <a href="/activate">Activate Key</a> | 
-        {{/unless}}
-        {{#if admin}}
-            <a href="/admin">Admin Panel</a> | 
-
-        {{/if}}
-        <a href="/logout">Logout</a>
-    </div>
+    {{/if}}
+    <a href="/logout">Logout</a>
+  </div>
 </div>
-
-
-

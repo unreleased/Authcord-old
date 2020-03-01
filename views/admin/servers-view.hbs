@@ -1,24 +1,24 @@
 <div class="admin-servers">
-    <header>
-        <h1>{{ user.data.username }}#{{ user.data.discriminator }}</h1>
-    </header>
+  <header>
+    <h1>{{ user.data.username }}#{{ user.data.discriminator }}</h1>
+  </header>
 
-    {{#if servers}}
-        {{#each servers}}
-            <div class="server">
-                {{#if icon}}
-                    <img src="https://cdn.discordapp.com/icons/{{id}}/{{icon}}.webp?size=64" />
-                {{else}}
-                    <img src="https://placehold.it/64x64" />
-                {{/if}}
-
-                <div class="server-details">
-                    <h2>{{name}}</h2>
-                    <span>{{id}}</span>
-                </div>
-            </div>
-        {{/each}}
+  {{#if servers}}
+  {{#each servers}}
+  <div class="server">
+    {{#if icon}}
+    <img src="https://cdn.discordapp.com/icons/{{ id }}/{{ icon }}.webp?size=64" />
     {{else}}
-        <p>This user is not in any servers.</p>
+    <img src="https://placehold.it/64x64" />
     {{/if}}
+
+    <div class="server-details">
+      <h2>{{ name }}</h2>
+      <span>{{ id }}</span>
+    </div>
+  </div>
+  {{/each}}
+  {{else}}
+  <p>This user is not in any servers.</p>
+  {{/if}}
 </div>

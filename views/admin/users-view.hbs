@@ -1,20 +1,19 @@
 <div class="admin-users">
-    <h1>{{ user.data.username }}#{{ user.data.discriminator }}</h1>
+  <h1>{{ user.data.username }}#{{ user.data.discriminator }}</h1>
 
-    {{#if user.data.activation_key}}
-        <p><strong>First Joined On: </strong>{{ user.data.joined_at_formatted }}</p>
-        <p><strong>Activation Key: </strong>{{ user.data.activation_key }}</p>
-        <p><strong>Key Created At:</strong> {{ user.data.created_at_formatted}}</p>
-        <p><strong>Key Expires:</strong> {{ user.data.expires_at_formatted}}</p>
-        <a href="/admin/keys/{{ user.data.activation_key }}/edit">Edit Key</a>    
-    {{else}}
-        <p>This user has no activation key linked to their account.</p>
-    {{/if}}
+  {{#if user.data.activation_key}}
+  <p><strong>First Joined On: </strong>{{ user.data.joined_at_formatted }}</p>
+  <p><strong>Activation Key: </strong>{{ user.data.activation_key }}</p>
+  <p><strong>Key Created At:</strong> {{ user.data.created_at_formatted }}</p>
+  <p><strong>Key Expires:</strong> {{ user.data.expires_at_formatted }}</p>
+  <a href="/admin/keys/{{ user.data.activation_key }}/edit">Edit Key</a>
+  {{else}}
+  <p>This user has no activation key linked to their account.</p>
+  {{/if}}
 
-    {{#if error}}
-        <div class="error">
-            <p>{{ error }}</p>
-        </div>
-    {{/if}}
-
+  {{#if error}}
+  <div class="error">
+    <p>{{ error }}</p>
+  </div>
+  {{/if}}
 </div>
