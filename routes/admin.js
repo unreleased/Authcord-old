@@ -7,11 +7,11 @@ const Admin = require('../models/admin');
 const Discord = require('../models/discord');
 const mw = require('../models/middleware');
 
-router.get('/', [mw.loggedIn, mw.isAdmin], async (req, res, next) => res.render('admin/index'));
+router.get('/', [mw.loggedIn, mw.isAdmin], async (req, res) => res.render('admin/index'));
 
-router.get('/generate', [mw.loggedIn, mw.isAdmin], async (req, res, next) => res.render('admin/generate'));
+router.get('/generate', [mw.loggedIn, mw.isAdmin], async (req, res) => res.render('admin/generate'));
 
-router.post('/generate', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
+router.post('/generate', [mw.loggedIn, mw.isAdmin], async (req, res) => {
   const { type } = req.body;
   const generate = await Admin.generateKey(type);
 
@@ -25,14 +25,14 @@ router.post('/generate', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
   });
 });
 
-router.get('/users', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
+router.get('/users', [mw.loggedIn, mw.isAdmin], async (req, res) => {
   const users = await Admin.getUsers();
   return res.render('admin/users', {
     users,
   });
 });
 
-router.post('/users', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
+router.post('/users', [mw.loggedIn, mw.isAdmin], async (req, res) => {
   const { query } = req.body;
   const found = await Admin.findUser(query);
 
@@ -45,7 +45,7 @@ router.post('/users', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
   });
 });
 
-router.get('/users/:id', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
+router.get('/users/:id', [mw.loggedIn, mw.isAdmin], async (req, res) => {
   const { id } = req.params;
   const user = await Admin.findUser(id);
 
@@ -58,7 +58,7 @@ router.get('/users/:id', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
   return res.redirect('/admin/users');
 });
 
-router.get('/users/:id/servers', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
+router.get('/users/:id/servers', [mw.loggedIn, mw.isAdmin], async (req, res) => {
   const { id } = req.params;
   const servers = await Discord.findServers(id);
   const users = await Admin.findUser(id);
@@ -69,14 +69,14 @@ router.get('/users/:id/servers', [mw.loggedIn, mw.isAdmin], async (req, res, nex
   });
 });
 
-router.get('/keys', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
+router.get('/keys', [mw.loggedIn, mw.isAdmin], async (req, res) => {
   const keys = await Admin.getKeys();
   return res.render('admin/keys', {
     keys,
   });
 });
 
-router.get('/keys/:key', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
+router.get('/keys/:key', [mw.loggedIn, mw.isAdmin], async (req, res) => {
   const query = req.params.key;
   const key = await Admin.getKey(query);
 
@@ -89,7 +89,7 @@ router.get('/keys/:key', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
   return res.redirect('/admin/keys');
 });
 
-router.post('/keys/:key', [mw.loggedIn, mw.isAdmin], async (req, res, next) => {
+router.post('/keys/:key', [mw.loggedIn, mw.isAdmin], async (req, res) => {
   const query = req.params.key;
   const key = await Admin.getKey(query);
 

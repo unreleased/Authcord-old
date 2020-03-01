@@ -1,5 +1,5 @@
 const Knex = require('knex');
-const dotenv = require('dotenv').config({ path: `${__dirname}/../.env` });
+require('dotenv').config({ path: `${__dirname}/../.env` });
 
 const knex = Knex({
   client: 'mysql',

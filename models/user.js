@@ -9,7 +9,7 @@ const Discord = require('./discord');
 
 const User = {};
 
-User.getSelf = async (id) => {
+User.getSelf = async id => {
   // Get user session to set
   try {
     const key = await knex('keys')
@@ -34,11 +34,11 @@ User.getSelf = async (id) => {
   }
 };
 
-User.activate = async (id, activation_key) => {
+User.activate = async (id, activationKey) => {
   try {
     // Check if key has been activated or not
     const key = await knex('keys')
-      .where('activation_key', activation_key)
+      .where('activation_key', activationKey)
       .first();
 
     if (key.discord_id !== null) {
@@ -49,7 +49,7 @@ User.activate = async (id, activation_key) => {
       // Activate the key
       await knex('keys')
         .update('discord_id', id)
-        .where('activation_key', activation_key);
+        .where('activation_key', activationKey);
 
       await Discord.addToServer(id);
       return true;

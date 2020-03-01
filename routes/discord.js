@@ -5,7 +5,7 @@ const router = express.Router();
 const Discord = require('../models/discord');
 const User = require('../models/user');
 
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
   let uri = 'https://discordapp.com/api/oauth2/authorize';
   uri += `?client_id=${process.env.DISCORD_CLIENT_ID}`;
   uri += `&redirect_uri=${process.env.DISCORD_REDIRECT_URI}`;
@@ -15,12 +15,12 @@ router.get('/', async (req, res, next) => {
   return res.redirect(uri);
 });
 
-router.get('/callback', async (req, res, next) => {
+router.get('/callback', async (req, res) => {
   if (req.query.code) {
     const { code } = req.query;
     const tokens = await Discord.exchangeCode(code);
 
-    if (tokens.error == 'invalid_request') {
+    if (tokens.error === 'invalid_request') {
       return res.redirect('/discord');
     }
 

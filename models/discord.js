@@ -1,10 +1,10 @@
-const knex = require('./database');
-const discord = require('discord.js');
 const moment = require('moment');
 const request = require('request-promise').defaults({
   simple: false,
   resolveWithFullResponse: true,
 });
+
+const knex = require('./database');
 
 /**
  * Imports
@@ -12,7 +12,7 @@ const request = require('request-promise').defaults({
 
 const Discord = {};
 
-Discord.exchangeCode = (code) => {
+Discord.exchangeCode = async code => {
   const opts = {
     url: 'https://discordapp.com/api/oauth2/token',
     method: 'POST',
@@ -30,25 +30,31 @@ Discord.exchangeCode = (code) => {
     json: true,
   };
 
-  return request(opts)
-    .then((res) => res.body)
-    .catch((err) => err);
+  try {
+    const res = await request(opts);
+    return res.body;
+  } catch (err) {
+    return err;
+  }
 };
 
-Discord.getUser = (token) => {
+Discord.getUser = async token => {
   const opts = {
     url: 'https://discordapp.com/api/users/@me',
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
-      Authorization: `Bearer ${token}`,
+      'Authorization': `Bearer ${token}`,
     },
     json: true,
   };
 
-  return request(opts)
-    .then((res) => res.body)
-    .catch((err) => err);
+  try {
+    const res = await request(opts);
+    return res.body;
+  } catch (err) {
+    return err;
+  }
 };
 
 Discord.saveUser = async (tokens, user) => {
@@ -80,12 +86,12 @@ Discord.saveUser = async (tokens, user) => {
   }
 };
 
-Discord.addToServer = async (id) => {
+Discord.addToServer = async id => {
   const guild = await global.discordClient.guilds.get(process.env.DISCORD_SERVER_ID);
   const token = await Discord.getAccessToken(id);
   console.log(token);
 
-  const resp = await guild.addMember(id, {
+  await guild.addMember(id, {
     accessToken: token,
     roles: [process.env.DEFAULT_ROLE],
   });
@@ -93,7 +99,7 @@ Discord.addToServer = async (id) => {
   return true;
 };
 
-Discord.getAccessToken = async (id) => {
+Discord.getAccessToken = async id => {
   try {
     const user = await knex('discords')
       .where('id', id)
@@ -107,17 +113,15 @@ Discord.getAccessToken = async (id) => {
       // return fresh token
       return await Discord._getNewToken(user.refresh_token);
     }
+
     return false;
-
-
-    return token;
   } catch (err) {
     console.log(err);
     return false;
   }
 };
 
-Discord._getNewToken = async (token) => {
+Discord._getNewToken = async token => {
   const opts = {
     url: 'https://discordapp.com/api/oauth2/token',
     method: 'POST',
@@ -136,7 +140,7 @@ Discord._getNewToken = async (token) => {
   };
 
   return request(opts)
-    .then(async (res) => {
+    .then(async res => {
       try {
         await knex('discords')
           .update({
@@ -156,14 +160,13 @@ Discord._getNewToken = async (token) => {
         return false;
       }
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
-      Sentry.captureException(err);
       return false;
     });
 };
 
-Discord.findServers = async (id) => {
+Discord.findServers = async id => {
   const token = await Discord.getAccessToken(id);
   console.log('TOKEN!');
   console.log(token);
@@ -175,16 +178,16 @@ Discord.findServers = async (id) => {
       json: true,
       headers: {
         'Content-type': 'application/json',
-        Authorization: `Bearer ${token}`,
+        'Authorization': `Bearer ${token}`,
       },
     };
 
     return request(opts)
-      .then((res) => {
+      .then(res => {
         console.log(res.body);
         return res.body;
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
         return false;
       });

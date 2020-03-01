@@ -8,7 +8,7 @@ Middleware.loggedIn = (req, res, next) => {
 };
 
 Middleware.isAdmin = (req, res, next) => {
-  if (req.session.user.id == process.env.DEFAULT_ADMIN) {
+  if (req.session.user.id === process.env.DEFAULT_ADMIN) {
     return next();
   }
   return res.redirect('/dashboard');

@@ -15,17 +15,16 @@ const Admin = {
   },
 };
 
-Admin.generateKey = async (type) => {
+Admin.generateKey = async type => {
   try {
     // Check type is valid
     if (!Admin.key_types[type]) {
       return {
         success: false,
-        message: 'Invalid type when trying to generate an activation key. You shouldn\'t be seeing this page.',
+        message: "Invalid type when trying to generate an activation key. You shouldn't be seeing this page.",
       };
     }
 
-    // Generate key format ('XXXXX-XXXXX-XXXXX-XXXXX')
     const key = uuid()
       .split('-')
       .join('')
@@ -55,7 +54,7 @@ Admin.generateKey = async (type) => {
   }
 };
 
-Admin.findUser = async (query) => {
+Admin.findUser = async query => {
   try {
     const discord = await knex('discords')
       .leftOuterJoin('keys', 'discords.id', '=', 'keys.discord_id')
@@ -115,12 +114,15 @@ Admin.getUsers = async () => {
         'keys.expires_at',
       ]);
 
-    users.map((user) => {
-      if (user.activation_key) {
-        user.expires_at_formatted = moment(user.expires_at).format('Do MMMM, YYYY');
-        user.created_at_formatted = moment(user.created_at).format('Do MMMM, YYYY');
+    users.map(user => {
+      const newUser = user;
+      if (newUser.activation_key) {
+        newUser.expires_at_formatted = moment(user.expires_at).format('Do MMMM, YYYY');
+        newUser.created_at_formatted = moment(user.created_at).format('Do MMMM, YYYY');
       }
-      user.joined_at_formatted = moment(user.joined_at).format('Do MMMM, YYYY');
+
+      newUser.joined_at_formatted = moment(user.joined_at).format('Do MMMM, YYYY');
+      return newUser;
     });
 
     console.log(users);
@@ -136,9 +138,12 @@ Admin.getKeys = async () => {
   try {
     const keys = await knex('keys').leftOuterJoin('discords', 'discords.id', '=', 'keys.discord_id');
 
-    keys.map((key) => {
-      key.expires_at_formatted = moment(key.expires_at).format('Do MMMM, YYYY');
-      key.created_at_formatted = moment(key.created_at).format('Do MMMM, YYYY');
+    keys.map(key => {
+      const newKey = key;
+      newKey.expires_at_formatted = moment(key.expires_at).format('Do MMMM, YYYY');
+      newKey.created_at_formatted = moment(key.created_at).format('Do MMMM, YYYY');
+
+      return newKey;
     });
 
     return keys;
@@ -148,10 +153,10 @@ Admin.getKeys = async () => {
   }
 };
 
-Admin.getKey = async (activation_key) => {
+Admin.getKey = async activationKey => {
   try {
     const key = await knex('keys')
-      .where('activation_key', activation_key)
+      .where('activation_key', activationKey)
       .first();
 
     if (key) {
@@ -168,11 +173,13 @@ Admin.getKey = async (activation_key) => {
   }
 };
 
-Admin.updateKey = async (activation_key, values) => {
+Admin.updateKey = async (activationKey, values) => {
   try {
     await knex('keys')
       .update(values)
-      .where('activation_key', activation_key);
+      .where('activation_key', activationKey);
+
+    return true;
   } catch (err) {
     console.log(err);
     return false;
